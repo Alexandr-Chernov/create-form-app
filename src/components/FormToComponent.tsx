@@ -9,6 +9,10 @@ const FormToComponent = ({ forms }: FormToComponentProps) => {
   const [components, setComponents] = useState<JSX.Element[] | null>(null)
 
   useEffect(() => {
+    const processData = (forms: Form[]): JSX.Element[] => {
+      return forms.map((form) => formsRouter[form.type](form))
+    }
+
     setComponents(processData(forms))
   }, [forms])
 
@@ -56,17 +60,22 @@ const FormToComponent = ({ forms }: FormToComponentProps) => {
     },
   }
 
-  const processData = (forms: Form[]): JSX.Element[] => {
-    return forms.map((form) => formsRouter[form.type](form))
-  }
-
   return (
-    <div className="bg-gray-100 rounded-md shadow-2xl sm:w-1/2 mx-auto mb-10 py-5 grid grid-cols-1 place-items-center">
+    <div className="bg-gray-100 rounded-md shadow-2xl sm:w-3/4 lg:w-1/2 mx-auto mb-10 py-5 grid grid-cols-1 place-items-center">
+      <h1 className="text-5xl text-gray-500 my-5">Your survey form:</h1>
       {components?.map((component, index) => (
         <div key={index} className="my-5">
           {component}
         </div>
       ))}
+      <div className="w-3/4 flex justify-start">
+        <button
+          className="my-3 tracking-wider rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          disabled
+        >
+          Submit
+        </button>
+      </div>
     </div>
   )
 }

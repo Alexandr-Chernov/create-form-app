@@ -25,7 +25,7 @@ const example: Form[] = [
   },
   {
     type: 'nameOfContact',
-    content: 'Emergency Contact Name:',
+    content: 'Your number phone',
   },
 ]
 
