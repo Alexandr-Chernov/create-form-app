@@ -1,4 +1,4 @@
-module.exports = !process.env.REACT_APP_DEV_DISABLE_ESLINT ? {
+module.exports = process.env.REACT_APP_DEV_DISABLE_ESLINT ? {
   plugins: ["@typescript-eslint"]
 } : {
   root: true,

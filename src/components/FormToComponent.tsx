@@ -57,9 +57,7 @@ const FormToComponent = ({ forms }: FormToComponentProps) => {
   }
 
   const processData = (forms: Form[]): JSX.Element[] => {
-    return forms.map((form) => {
-      return formsRouter[form.type](form)
-    })
+    return forms.map((form) => formsRouter[form.type](form))
   }
 
   return (
